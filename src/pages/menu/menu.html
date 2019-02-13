@@ -1,0 +1,33 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar color="white">
+        <div>
+            <img src="../../assets/imgs/train-logo.jpg"style="height: 40px;" />
+          </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+
+
+    <ion-list inset>
+
+        <ion-item (click)="openPage('home')" menuClose>
+            <ion-icon name="home" item-left large color="green"></ion-icon>
+            <h5>Home</h5>
+          </ion-item>
+
+      
+        <ion-item (click)="openPage('about')" menuClose>
+            <ion-icon name="information-circle" item-left large color="green"></ion-icon>
+            <h5>About Us</h5>
+          </ion-item>
+            
+    </ion-list>
+
+
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav #content [root]="homePage"></ion-nav>

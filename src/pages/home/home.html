@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-header>
+    <ion-navbar color="white">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+          <!-- <ion-title>TRAIN TICKETS</ion-title> -->
+          <div>
+            <img src="../../assets/imgs/train-logo.jpg"style="height: 40px;" />
+          </div>
+    </ion-navbar>
+  </ion-header>
+</ion-header>
+
+<ion-content no-padding style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+  <ion-card style="margin-top: 3em" color="light">
+    <ion-card-content>
+      <ion-card-title>
+        <b>
+            VEND TICKET
+        </b>
+        
+      </ion-card-title>
+      <ion-list>
+
+        <ion-item>
+            <ion-label>From</ion-label>
+            <ion-select [(ngModel)]="fromMethod">
+              <ion-option *ngFor= "let s of from" value="{{s.network_id}}"> {{s.network_name}} </ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label >To</ion-label>
+            <ion-select [(ngModel)]="toMethod">
+              <ion-option *ngFor= "let s of to" value="{{s.network_id}}"> {{s.network_name}} </ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Number of seats</ion-label>
+          <ion-input type="number" floating [(ngModel)]="numberSeats"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label >TICKET TYPE</ion-label>
+            <ion-select  [(ngModel)]="diffWays">
+              
+              <ion-option value="o" (ionSelect)="oneWay()">ONE WAY</ion-option>
+              <ion-option value="r" (ionSelect)="returnWay()">RETURN</ion-option>
+            </ion-select>
+          </ion-item>
+
+
+        
+          
+
+         
+
+
+
+        <ion-item>
+            <ion-label >Departure Date</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="deptDate"></ion-datetime>
+          </ion-item>
+
+          <ion-item *ngIf="radioClicked">
+              <ion-label>Return Date</ion-label>
+              <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="returnDate"></ion-datetime>
+            </ion-item>
+
+            
+
+          
+
+            
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card> <br/>
+
+  <ion-card color="light">
+    <ion-card-content>
+      <ion-card-title >
+        <b>
+            PASSENGER INFO
+        </b>
+        
+      </ion-card-title>
+
+      <ion-item>
+        <ion-label ><ion-icon name="person"></ion-icon> Name</ion-label>
+        <ion-input type="text" [(ngModel)]="passengerName" floating></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label ><ion-icon name="mail"></ion-icon> Email</ion-label>
+        <ion-input type="email" [(ngModel)]="passengerEmail" floating></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label><ion-icon name="call"></ion-icon> Mobile</ion-label>
+        <ion-input type="number" [(ngModel)]= "passengerMobile"  floating></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item>
+      <button (click)="submit()" class="submitButton" ion-button color="green" large block style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">SUBMIT</button>
+  </ion-item>
+ 
+ 
+</ion-content>

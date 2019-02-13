@@ -1,0 +1,88 @@
+<ion-header>
+
+  <ion-navbar color="white">
+    <!-- <ion-title>SELECT TRAIN SCHEDULE</ion-title> -->
+    <div>
+        <img src="../../assets/imgs/train-logo.jpg"style="height: 40px;" />
+      </div>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+  <ion-card>
+    <ion-card-content>
+        <ion-item-divider color="green" >Ticket Information - <b>{{numberSeats}} seats</b></ion-item-divider>
+        <ion-grid >
+          <p><b>LOCATIONS</b></p>
+          <ion-row>
+            DEPARTURE: <b>  {{fromMethod | uppercase}}</b><br/>
+            </ion-row>
+            <ion-row>
+            ARRIVAL:   <b>  {{toMethod | uppercase}}</b>  
+          </ion-row><br/>
+
+          <p><b>TIMES</b></p>
+          <ion-row >
+            FIRST TICKET(DATE): <b>{{deptDate}}</b><br/>
+            </ion-row>
+            <ion-row>
+            SECOND TICKET(DATE):   <b>{{returnDate}}</b>
+          </ion-row>
+          
+        </ion-grid>
+           
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item-divider color="green" >Passenger Details</ion-item-divider>
+      <ion-grid >
+        <ion-row>
+          <ion-col col-12>
+              Passenger : {{passengerName | uppercase}}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-12>
+            Email:  {{passengerEmail}}
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+            <ion-col col-12>
+            Mobile: {{passengerMobile}}
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+ 
+        <ion-label style="padding-left: 2px">Please confirm all the above details before proceeding</ion-label>
+   
+   
+
+  <ion-item>
+    <button ion-button block large block color="green" style="border-color: green" (click)="toggle()"><ion-icon name="train"></ion-icon> BOOK HERE!</button>
+  </ion-item>
+
+  <ion-card *ngIf="buttonClicked" [style.display]="getDepartureDisplayStatus()">
+    <ion-card-content>
+        <ion-item-divider color="green" ><b>TRAVEL TIME <span style="color: gold;">FIRST TICKET</span></b></ion-item-divider>
+    </ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let schedule of schedules">
+        {{schedule.schedule_name}}<button (click)="process()" style="float: right;" ion-button color="green">BOOK</button><br/>
+        
+        <small>{{schedule.schedule_type}}</small> 
+        
+      </ion-item>
+    
+    </ion-list>
+  </ion-card>
+
+</ion-content>
